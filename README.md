@@ -41,6 +41,7 @@
 4. **Установите зависимости Composer:**
     ```bash
     ./vendor/bin/sail composer install
+    
 5. **Сгенерируйте ключ приложения:**
     ```bash
     ./vendor/bin/sail artisan key:generate
@@ -62,12 +63,8 @@
     ```bash
     ./vendor/bin/sail npm run build
 
+10. **Если контейнеры ещё не запущены, выполните:**
+    ```bash
+    ./vendor/bin/sail up -d
 
-Если контейнеры ещё не запущены, выполните:
-
-bash
-Copy
-./vendor/bin/sail up -d
-Откройте проект в браузере:
-
-По умолчанию приложение будет доступно по адресу: http://localhost.
+Откройте проект в браузере. По умолчанию приложение будет доступно по адресу: http://localhost.
