@@ -18,53 +18,42 @@
    git clone https://github.com/novseo/otus-laravel.git
    cd otus-laravel
 
+2. **Скопируйте файл .env.example:**
 
-Скопируйте файл .env.example:
+    ```bash
+        cp .env.example .env
 
-bash
-Copy
-cp .env.example .env
-Откройте файл .env и настройте подключение к базе данных (Sail использует предопределенные настройки для Docker):
+3. **Откройте файл .env и настройте подключение к базе данных (Sail использует предопределенные настройки для Docker):**
+     ```bash
+        DB_CONNECTION=mysql
+        DB_HOST=mysql
+        DB_PORT=3306
+        DB_DATABASE=otus_laravel
+        DB_USERNAME=sail
+        DB_PASSWORD=password
 
-env
-Copy
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=otus_laravel
-DB_USERNAME=sail
-DB_PASSWORD=password
-Запустите Sail:
-
-Используйте команду sail up для запуска контейнеров:
-
-bash
-Copy
-./vendor/bin/sail up -d
+3. **Запустите Sail:**
+    ```bash
+    ./vendor/bin/sail up -d
+    
 Флаг -d запускает контейнеры в фоновом режиме.
 
-Установите зависимости Composer:
+4. **Установите зависимости Composer:**
+    ```bash
+    ./vendor/bin/sail composer install
+5. **Сгенерируйте ключ приложения:**
+    ```bash
+    ./vendor/bin/sail artisan key:generate
 
-bash
-Copy
-./vendor/bin/sail composer install
-Сгенерируйте ключ приложения:
+6. Запустите миграции и сидеры:
 
-bash
-Copy
-./vendor/bin/sail artisan key:generate
-Запустите миграции и сидеры:
+    ```bash
+    ./vendor/bin/sail artisan migrate --seed
 
-Создайте таблицы в базе данных и заполните их тестовыми данными:
-
-bash
-Copy
-./vendor/bin/sail artisan migrate --seed
-Установите зависимости Node.js:
-
-bash
-Copy
-./vendor/bin/sail npm install
+7. Установите зависимости Node.js:
+    ```bash
+    ./vendor/bin/sail npm install
+    
 Соберите фронтенд:
 
 Соберите CSS и JavaScript файлы:
