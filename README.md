@@ -1,66 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Otus Laravel Project
+Этот проект представляет собой веб-приложение, разработанное на фреймворке Laravel. Для управления окружением разработки используется Laravel Sail. Ниже приведены инструкции по установке и запуску проекта.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Требования
+Перед началом работы убедитесь, что у вас установлены следующие компоненты:
 
-## About Laravel
+Docker (для работы с Sail)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Docker Compose (обычно входит в Docker)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Git (для работы с репозиторием)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Установка проекта
+Клонируйте репозиторий:
 
-## Learning Laravel
+bash
+Copy
+git clone https://github.com/novseo/otus-laravel.git
+cd otus-laravel
+Скопируйте файл .env.example:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+bash
+Copy
+cp .env.example .env
+Откройте файл .env и настройте подключение к базе данных (Sail использует предопределенные настройки для Docker):
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+env
+Copy
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=otus_laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
+Запустите Sail:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Используйте команду sail up для запуска контейнеров:
 
-## Laravel Sponsors
+bash
+Copy
+./vendor/bin/sail up -d
+Флаг -d запускает контейнеры в фоновом режиме.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Установите зависимости Composer:
 
-### Premium Partners
+bash
+Copy
+./vendor/bin/sail composer install
+Сгенерируйте ключ приложения:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+bash
+Copy
+./vendor/bin/sail artisan key:generate
+Запустите миграции и сидеры:
 
-## Contributing
+Создайте таблицы в базе данных и заполните их тестовыми данными:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+bash
+Copy
+./vendor/bin/sail artisan migrate --seed
+Установите зависимости Node.js:
 
-## Code of Conduct
+bash
+Copy
+./vendor/bin/sail npm install
+Соберите фронтенд:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Соберите CSS и JavaScript файлы:
 
-## Security Vulnerabilities
+bash
+Copy
+./vendor/bin/sail npm run dev
+Или для продакшн-сборки:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+bash
+Copy
+./vendor/bin/sail npm run build
+Запуск проекта
+Запустите Sail:
 
-## License
+Если контейнеры ещё не запущены, выполните:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+bash
+Copy
+./vendor/bin/sail up -d
+Откройте проект в браузере:
+
+По умолчанию приложение будет доступно по адресу: http://localhost.
