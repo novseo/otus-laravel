@@ -1,22 +1,24 @@
-Otus Laravel Project
+# Otus Laravel Project
+
 Этот проект представляет собой веб-приложение, разработанное на фреймворке Laravel. Для управления окружением разработки используется Laravel Sail. Ниже приведены инструкции по установке и запуску проекта.
 
-Требования
+## Требования
+
 Перед началом работы убедитесь, что у вас установлены следующие компоненты:
 
-Docker (для работы с Sail)
+- Docker (для работы с Sail)
+- Docker Compose (обычно входит в Docker)
+- Git (для работы с репозиторием)
 
-Docker Compose (обычно входит в Docker)
+## Установка проекта
 
-Git (для работы с репозиторием)
+1. **Клонируйте репозиторий:**
 
-Установка проекта
-Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/novseo/otus-laravel.git
+   cd otus-laravel
 
-bash
-Copy
-git clone https://github.com/novseo/otus-laravel.git
-cd otus-laravel
+
 Скопируйте файл .env.example:
 
 bash
