@@ -50,24 +50,18 @@
     ```bash
     ./vendor/bin/sail artisan migrate --seed
 
-7. Установите зависимости Node.js:
+7. **Установите зависимости Node.js:**
     ```bash
     ./vendor/bin/sail npm install
     
-Соберите фронтенд:
+8. **Соберите фронтенд:**
+    ```bash
+    ./vendor/bin/sail npm run dev
 
-Соберите CSS и JavaScript файлы:
+9. **Или для продакшн-сборки:**
+    ```bash
+    ./vendor/bin/sail npm run build
 
-bash
-Copy
-./vendor/bin/sail npm run dev
-Или для продакшн-сборки:
-
-bash
-Copy
-./vendor/bin/sail npm run build
-Запуск проекта
-Запустите Sail:
 
 Если контейнеры ещё не запущены, выполните:
 
